@@ -1,6 +1,6 @@
-from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from users.views import UserViewSet, SubscriptionsViewSet
+from django.urls import path, include
 
 app_name = 'users'
 

@@ -1,9 +1,9 @@
 from django.forms import ValidationError
 from django.shortcuts import get_object_or_404
-from django.db import IntegrityError, transaction
+from recipes.models import FollowOnRecipe, FollowOnUser, Recipe
 from drf_extra_fields.fields import Base64ImageField
 from rest_framework import serializers
-from recipes.models import FollowOnRecipe, FollowOnUser, Recipe
+from django.db import IntegrityError, transaction
 from users.models import User
 
 
@@ -144,4 +144,5 @@ class FollowOnRecipeSerializer(serializers.ModelSerializer):
         recipe_id = self.context['view'].kwargs.get('id')
         recipe = get_object_or_404(Recipe, id=recipe_id)
         FollowOnRecipe.create(user=user, recipe=recipe_id)
+
         return recipe
