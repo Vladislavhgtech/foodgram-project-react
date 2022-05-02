@@ -189,6 +189,7 @@ class ShopListCreateSerializer(serializers.ModelSerializer):
         return recipe
 
 
+
 class RecipeFavoriteSerializer(serializers.ModelSerializer):
 
     class Meta:
