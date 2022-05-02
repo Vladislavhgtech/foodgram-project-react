@@ -135,7 +135,7 @@ class RecipeViewSet(viewsets.ModelViewSet):
 
 class DownloadShopGetView(APIView):
     def get(self, request):
-        PDF = 'application/pdf'
+        pdfAdd = 'application/pdf'
         user = request.user
         if user.is_anonymous:
             return Response('Вы не авторизованы',
@@ -148,7 +148,7 @@ class DownloadShopGetView(APIView):
         file_name = f'Список покупок. Автор {user.first_name} {user.last_name}'
         doc_title = f'Список покупок. Автор {user.first_name} {user.last_name}'
         title = (f'Список покупок. Автор {user.first_name} {user.last_name}')
-        response = HttpResponse(content_type=PDF)
+        response = HttpResponse(content_type=pdfAdd)
         content_disposition = f'attachment; filename="{file_name}.pdf"'
         response['Content-Disposition'] = content_disposition
         pdf = canvas.Canvas(response)
