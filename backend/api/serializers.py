@@ -184,9 +184,8 @@ class ShopListCreateSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         user = self.context['request'].user
         recipe_id = self.context['view'].kwargs.get('id')
-        recipe = get_object_or_404(Recipe, id=recipe_id)
         ShopList.create(user=user, recipe=recipe_id)
-        return recipe
+        return get_object_or_404(Recipe, id=recipe_id)
 
 
 class RecipeFavoriteSerializer(serializers.ModelSerializer):
