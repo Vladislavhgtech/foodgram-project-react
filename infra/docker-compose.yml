@@ -8,7 +8,6 @@ volumes:
   redoc:
 
 services:
-
   db:
     image: postgres:13.0-alpine
     volumes:
@@ -17,9 +16,8 @@ services:
       - ./.env
 
   backend:
-    build: 
-      context: ../backend
-      dockerfile: Dockerfile
+    #image: vldmsq/foodgram-backend:latest
+    build: .
     restart: always
     volumes:
       - static_value:/app/static/
@@ -33,9 +31,8 @@ services:
       - db
 
   frontend:
-    build:
-      context: ../frontend
-      dockerfile: Dockerfile
+    #image: vldmsq/foodgram-frontend:latest
+    build: .
     volumes:
       - result_build:/app/result_build/build/
     depends_on:
@@ -44,12 +41,13 @@ services:
   nginx:
     image: nginx:1.19.3
     ports:
-      - "80:80"
+      - '80:80'
     volumes:
       - ./nginx.conf:/etc/nginx/conf.d/default.conf
       - result_build:/usr/share/nginx/html/
       - redoc:/usr/share/nginx/html/api/docs/
       - static_value:/var/html/static/
       - media_value:/var/html/media/
+
     depends_on:
-      - backend
+      - frontend
