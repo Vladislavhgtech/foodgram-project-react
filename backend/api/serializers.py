@@ -5,7 +5,6 @@ from recipes.models import (FollowOnRecipe, Ingredient, IngredientAmount,
                             Recipe, ShopList, Tag)
 from users.serializers import CustomUserSerializer
 from django.db import transaction
-from itertools import islice
 
 
 class TagSerializer(serializers.ModelSerializer):
