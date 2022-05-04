@@ -69,7 +69,7 @@ class RecipeViewSet(viewsets.ModelViewSet):
         user = self.request.user
         recipe = get_object_or_404(Recipe, id=pk)
         is_already_follow = FollowOnRecipe.objects.filter(user=user,
-                                                          recipe=recipe)
+                                                          recipe=recipe).exists()
         if request.method == 'POST':
             if is_already_follow:
                 return Response('Error: Вы уже подписаны на рецепт '

@@ -4,6 +4,8 @@ from rest_framework import serializers
 from recipes.models import (FollowOnRecipe, Ingredient, IngredientAmount,
                             Recipe, ShopList, Tag)
 from users.serializers import CustomUserSerializer
+from django.db import transaction
+from itertools import islice
 
 
 class TagSerializer(serializers.ModelSerializer):
@@ -111,6 +113,7 @@ class RecipeCreateSerializer(serializers.ModelSerializer):
 
         return data
 
+    @transaction.atomic
     def create(self, validated_data):
         author = self.context['request'].user
         image = validated_data.pop('image')
@@ -125,13 +128,14 @@ class RecipeCreateSerializer(serializers.ModelSerializer):
         for ingredient in ingredients_data:
             id = ingredient.get('id')
             amount = int(ingredient.get('amount'))
-            IngredientAmount.objects.create(
+            IngredientAmount.objects.bulk_create(
                 ingredient_id=id,
                 recipe=recipe,
                 amount=amount
             )
         return recipe
 
+    @transaction.atomic
     def update(self, instance, validated_data):
         instance.ingredients.clear()
         instance.tags.clear()
@@ -144,7 +148,7 @@ class RecipeCreateSerializer(serializers.ModelSerializer):
         for ingredient in ingredients_data:
             ingredient_id = ingredient.get('id')
             ingredient_amount = ingredient.get('amount')
-            IngredientAmount.objects.create(
+            IngredientAmount.objects.bulk_create(
                 recipe=instance,
                 ingredient_id=ingredient_id,
                 amount=ingredient_amount
