@@ -16,7 +16,7 @@ services:
       - ./.env
 
   backend:
-    #image: vldmsq/foodgram-backend:latest
+    image: vldmsq/foodgram-backend:latest
     build: ../backend
     restart: always
     volumes:
@@ -31,7 +31,7 @@ services:
       - db
 
   frontend:
-    #image: vldmsq/foodgram-frontend:latest
+    image: vldmsq/foodgram-frontend:latest
     build: ../frontend/
     volumes:
       - result_build:/app/result_build/build/
