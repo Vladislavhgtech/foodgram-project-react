@@ -17,7 +17,7 @@ services:
 
   backend:
     #image: vldmsq/foodgram-backend:latest
-    build: .
+    build: ../backend
     restart: always
     volumes:
       - static_value:/app/static/
@@ -32,7 +32,7 @@ services:
 
   frontend:
     #image: vldmsq/foodgram-frontend:latest
-    build: .
+    build: ../frontend/
     volumes:
       - result_build:/app/result_build/build/
     depends_on:
