@@ -69,10 +69,10 @@ jobs:
         passphrase: ${{ secrets.PASSPHRASE }}
         script: |
             sudo docker pull ${{ secrets.DOCKER_USERNAME  }}/foodgram-backend:latest
-            cd foodgram-project-react/infra
-            # sudo docker-compose stop
-            # sudo docker-compose rm backend -y
-            sudo docker-compose up -d
+  #          cd foodgram-project-react/infra
+   #         # sudo docker-compose stop
+    #        # sudo docker-compose rm backend -y
+       #      sudo docker-compose up -d
             
 #   telegram_message:
 #     name: Send telegram message
