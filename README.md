@@ -1,4 +1,4 @@
-[![Actions Status]
+![example workflow](https://github.com/Vladislavhgtech/foodgram-project-react/actions/workflows/main.yml/badge.svg)
 
 # Рабочий проект находится 
 http://51.250.5.68/
