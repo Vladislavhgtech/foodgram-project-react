@@ -134,7 +134,7 @@ class RecipeCreateSerializer(serializers.ModelSerializer):
                 amount=amount))
         IngredientAmount.objects.bulk_create(entity_list)
         return recipe
-    
+
     @transaction.atomic
     def update(self, instance, validated_data):
         instance.ingredients.clear()
