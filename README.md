@@ -1,16 +1,28 @@
-![YaMDB workflow](https://github.com/KaterinaSolovyeva/foodgram-project-react/actions/workflows/foodgram_workflow.yml/badge.svg)
+[![Actions Status]
+
+# Рабочий проект находится 
+http://51.250.5.68/
+
+Администратор: 
+login: admin
+pass: admin
+
+Пользователь:
+login: mskvldmsk@gmail.com
+pass: 12345
+
 
 # Описание.
 
 Проект «Продуктовый помощник». На этом сервисе пользователи могут публиковать рецепты, подписываться на публикации других пользователей, добавлять понравившиеся рецепты в список «Избранное», а перед походом в магазин скачивать сводный список продуктов, необходимых для приготовления одного или нескольких выбранных блюд.
 
-Стек: Python 3, Django 3, Django REST Framework, SQLite3, PostgreSQL, gunicorn, nginx, Яндекс.Облако (Ubuntu 18.04)
+Стек: Python 3, Django 3, Django REST Framework, SQLite3, PostgreSQL, gunicorn, nginx, Яндекс.Облако (Ubuntu 20.04)
 
 # Как запустить проект:
 
 Клонировать репозиторий и перейти в него в командной строке:
 ```
-git clone https://github.com/KaterinaSolovyeva/foodgram-project-react
+git clone https://github.com/Vladislavhgtech/foodgram-project-react.git
 
 ```
 ```
@@ -18,12 +30,14 @@ cd foodgram-project-react
 ```
 Создайте файл .env командой touch .env. Шаблон наполнения env-файла:
 ```
-DB_ENGINE=django.db.backends.postgresql # указываем, что работаем с postgresql
-DB_NAME=postgres # имя базы данных
-POSTGRES_USER=postgres # логин для подключения к базе данных
-POSTGRES_PASSWORD=postgres # пароль для подключения к БД (установите свой)
-DB_HOST=db # название сервиса (контейнера)
-DB_PORT=5432 # порт для подключения к БД
+DB_ENGINE=django.db.backends.postgresql
+DB_NAME=postgres
+POSTGRES_USER=postgres_user
+POSTGRES_PASSWORD=postgres_password
+DB_HOST=db
+DB_PORT=5432
+ENV=LOCAL
+
 ```
 ```
 Запустите docker-compose командой sudo docker-compose up -d
