@@ -123,15 +123,16 @@ class RecipeCreateSerializer(serializers.ModelSerializer):
                                        **validated_data)
         tags = self.initial_data.get('tags')
         recipe.tags.set(tags)
+        entity_list = []
 
         for ingredient in ingredients_data:
             id = ingredient.get('id')
             amount = int(ingredient.get('amount'))
-            IngredientAmount.objects.create(
+            entity_list.append(IngredientAmount(
                 ingredient_id=id,
                 recipe=recipe,
-                amount=amount
-            )
+                amount=amount))
+        IngredientAmount.objects.bulk_create(entity_list)   
         return recipe
 
     @transaction.atomic
@@ -143,15 +144,16 @@ class RecipeCreateSerializer(serializers.ModelSerializer):
         tags = self.initial_data.get('tags')
         for tag in tags:
             instance.tags.add(tag)
-
+        
+        entity_list = []
         for ingredient in ingredients_data:
             ingredient_id = ingredient.get('id')
             ingredient_amount = ingredient.get('amount')
-            IngredientAmount.objects.create(
+            entity_list.append(IngredientAmount(
                 recipe=instance,
                 ingredient_id=ingredient_id,
-                amount=ingredient_amount
-            )
+                amount=ingredient_amount))
+        IngredientAmount.objects.bulk_create(entity_list)
         return super().update(instance, validated_data)
 
 
