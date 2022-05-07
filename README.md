@@ -4,12 +4,12 @@
 http://51.250.5.68/
 
 Администратор: 
-login: admin
-pass: admin
+### login: admin
+### pass: admin
 
 Пользователь:
-login: mskvldmsk@gmail.com
-pass: 12345
+### login: mskvldmsk@gmail.com
+### pass: 12345
 
 
 # Описание.
