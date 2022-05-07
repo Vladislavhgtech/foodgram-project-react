@@ -127,7 +127,7 @@ class RecipeCreateSerializer(serializers.ModelSerializer):
         for ingredient in ingredients_data:
             id = ingredient.get('id')
             amount = int(ingredient.get('amount'))
-            IngredientAmount.objects.bulk_create(
+            IngredientAmount.objects.create(
                 ingredient_id=id,
                 recipe=recipe,
                 amount=amount
@@ -147,7 +147,7 @@ class RecipeCreateSerializer(serializers.ModelSerializer):
         for ingredient in ingredients_data:
             ingredient_id = ingredient.get('id')
             ingredient_amount = ingredient.get('amount')
-            IngredientAmount.objects.bulk_create(
+            IngredientAmount.objects.create(
                 recipe=instance,
                 ingredient_id=ingredient_id,
                 amount=ingredient_amount
