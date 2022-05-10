@@ -1,7 +1,7 @@
 ![example workflow](https://github.com/Vladislavhgtech/foodgram-project-react/actions/workflows/main.yml/badge.svg)
 
 # Рабочий проект находится 
-http://51.250.5.68/
+http://51.250.88.217/
 
 Администратор: 
 ### login: admin
